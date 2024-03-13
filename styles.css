@@ -1,0 +1,36 @@
+body {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+}
+
+#categories {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    cursor: pointer;
+}
+
+#products {
+    flex: 2;
+    padding: 20px;
+    display: none;
+}
+
+#productInfo {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+
+}
+
+.product {
+    cursor: pointer;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
