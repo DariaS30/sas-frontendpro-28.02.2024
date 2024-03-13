@@ -2,9 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Search</title>
+  <style>
+    #postContainer {
+      display: none;
+      margin-top: 20px;
+    }
+
+    #commentsContainer {
+      display: none;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
+<label for="postId">Enter Post ID (1-100): </label>
+<input type="number" id="postId" min="1" max="100" required>
+<button onclick="searchPost()">Search Post</button>
 
+<div id="postContainer"></div>
+<div id="commentsContainer"></div>
+
+<script src="script.js"></script>
 </body>
 </html>
