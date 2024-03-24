@@ -18,7 +18,36 @@
 
 <div id="productInfo"></div>
 
+<div id="orderForm" style="display: none;">
+  <h2>Order Form</h2>
+  <form onsubmit="submitOrder(event)">
+    <input type="text" id="fullName" placeholder="Full Name" required><br>
+    <select id="city" required>
+      <option value="">Select City</option>
+      <option value="Kyiv">Kyiv</option>
+      <option value="Lviv">Lviv</option>
+      <option value="Kharkiv">Kharkiv</option>
+      <!-- Add more cities if needed -->
+    </select><br>
+    <input type="text" id="postOffice" placeholder="Post Office" required><br>
+    <select id="paymentMethod" required>
+      <option value="">Select Payment Method</option>
+      <option value="Cash on Delivery">Cash on Delivery</option>
+      <option value="Credit Card">Credit Card</option>
+    </select><br>
+    <input type="number" id="quantity" placeholder="Quantity" required><br>
+    <textarea id="comment" placeholder="Comment"></textarea><br>
+    <button type="submit">Submit Order</button>
+  </form>
+</div>
+
+<div id="orderSummary"></div>
+
 <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
 

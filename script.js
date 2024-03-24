@@ -39,25 +39,59 @@ function showProducts(category) {
     function showProductInfo(product) {
         productInfoContainer.style.display = 'block';
         productInfoContainer.innerHTML = `
-      <div>
-        <h2>${product.name || product.title}</h2>
-        <p>Price: $${product.price.toFixed(2)}</p>
-        <button onclick="buyProduct()">Buy</button>
-      </div>
-    `;
+            <div>
+                <h2>${product.name || product.title}</h2>
+                <p>Price: $${product.price.toFixed(2)}</p>
+                <button onclick="showOrderForm()">Buy</button>
+            </div>
+        `;
     }
 
-    window.buyProduct = function() {
-        alert('Product purchased!');
-        resetApp();
+    window.showOrderForm = function() {
+        const orderForm = document.getElementById('orderForm');
+        orderForm.style.display = 'block';
     };
 
-    function resetApp() {
-        categoryContainer.style.display = 'flex';
-        productsContainer.style.display = 'none';
-        productInfoContainer.style.display = 'none';
-        productInfoContainer.innerHTML = ''; // Очистимо вміст блоку інформації про товар
+    function submitOrder(event) {
+        event.preventDefault();
+
+        const fullName = document.getElementById('fullName').value;
+        const city = document.getElementById('city').value;
+        const postOffice = document.getElementById('postOffice').value;
+        const paymentMethod = document.getElementById('paymentMethod').value;
+        const quantity = document.getElementById('quantity').value;
+        const comment = document.getElementById('comment').value;
+
+        if (!fullName || !city || !postOffice || !paymentMethod || !quantity) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        const orderInfo = {
+            fullName,
+            city,
+            postOffice,
+            paymentMethod,
+            quantity,
+            comment,
+        };
+
+        displayOrderInfo(orderInfo);
+    }
+
+    function displayOrderInfo(orderInfo) {
+        const orderSummaryContainer = document.getElementById('orderSummary'); // Змінено id контейнера
+        orderSummaryContainer.innerHTML = `
+            <div>
+                <h2>Order Summary</h2>
+                <p><strong>Product:</strong> ${orderInfo.quantity} x ${selectedProduct.name || selectedProduct.title}</p>
+                <p><strong>Delivery Address:</strong> ${orderInfo.fullName}, ${orderInfo.city}, ${orderInfo.postOffice}</p>
+                <p><strong>Payment Method:</strong> ${orderInfo.paymentMethod}</p>
+                <p><strong>Comment:</strong> ${orderInfo.comment}</p>
+            </div>
+        `;
     }
 }
+
 
 
